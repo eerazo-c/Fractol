@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:11:16 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 17:58:13 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:12:59 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -19,6 +19,20 @@ void my_pixel_p(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + level) = color;
 }
 
+void mandel_and_julia(t_complex *z, t_complex *c, t_plano *f)
+{
+	if (!ft_strncmp(f->name, "julia", 5))
+	{
+		c->x = f->julia_x;
+		c->y = f->julia_y;
+	}
+	else
+	{
+		c->x = z->x;
+		c->y = z->y;
+	}
+}
+
 void handle_pixel(int x, int y, t_plano *f)
 {
 	t_complex	z;
@@ -28,11 +42,11 @@ void handle_pixel(int x, int y, t_plano *f)
 
 //ITERACION CON FORMULA
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
 //PIXEL DE COORDINACION
 	c.x = map(x, -2, +2, 0, WIDTH); //unsacled: new_min: old_min: old_max:
 	c.y = map(y, -2, -2, 0, HEIGHT); //unsacled: new_min: old_min: old_max:
+
+	mandel_and_julia(&z, &c, f);
 
 //how many interate time z^2 + c
 //to check if the point scaped?

@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/16 04:56:29 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:53:52 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -45,7 +45,10 @@
 
 typedef struct s_complex
 {
+	//real
 	double x;
+
+	//imaginary
 	double y;
 }				t_complex;
 
@@ -66,6 +69,11 @@ typedef struct s_plano
 	t_img	img;
 	double	escape_value; //hypotenuse
 	int		interations_definition; //value con la image and
+	double	shift_x;
+	double	shift_y;
+	double	zoom;
+	double	julia_x;
+	double	julia_y;
 									//rendering sped
 }				t_plano;
 
@@ -78,5 +86,9 @@ void		handle_pixel(int x, int y, t_plano *f);
 double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex 	square_complex(t_complex z);
+int close_key(t_plano *f):
+int key_handler(int key, t_plano *f);
+int mouse_handler(int button, int x, int y, t_plano *f);
+int julia(int x, int y, t_plano *f);
 
 #endif

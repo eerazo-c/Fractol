@@ -6,7 +6,7 @@
 #    By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 16:36:16 by eerazo-c          #+#    #+#              #
-#    Updated: 2024/03/20 13:35:07 by eerazo-c         ###   ########.fr        #
+#    Updated: 2024/03/21 21:56:03 by eerazo-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX = ./mlx/libmlx.a
 LIBFT = ./Inc/libft/libft.a
 LIB_PRINTF = ./Inc/printf/libftprintf.a
 
-SOURCES = src/main.c src/fractal_initit.c src/fractol.c src/math_util.c
+SOURCES = src/main.c src/fractal_initit.c src/fractol.c src/math_util.c src/key_handler.c
 CC = cc
 
 OBJECTS = $(SOURCES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 03:18:50 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 18:04:13 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:02:05 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -19,10 +19,10 @@ static	void malloc_error(void)
 
 void data_initit(t_plano *f)
 {
-	f->escape_value = 4; //2 ^ 2, my hypotenus
+	f->escape_value = 4;
 	f->interations_definition = 42;
 }
-/*
+
 void mouse(t_plano	*f)
 {
 	mlx_hook(f->mlx_win,
@@ -46,7 +46,7 @@ void mouse(t_plano	*f)
 			julia,
 			f);
 }
-*/
+
 void fractal_initit(t_plano *f)
 {
 	f->mlx = mlx_init();	
@@ -79,5 +79,5 @@ void fractal_initit(t_plano *f)
 
 	//init fractal
 	data_initit(f);
-//	mouse(f);
+	mouse(f);
 }
