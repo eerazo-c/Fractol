@@ -193,6 +193,6 @@ int     mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_todel)
   free(img_todel->buffer);
   free(img_todel);
 
-  //  printf("destroy image done.\n");
+   ft_printf("destroy image done.\n"); //esto estaba comentado 
   return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:27:38 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 16:45:54 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:58:05 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ int	main(int ac, char **av)
 {
 	t_plano	f;
 
-	ft_printf("probando, si funciona");
 	if (!check(ac, &av[1]))
 		exit(1);
 	f.name = av[1];
 	fractal_initit(&f);
 	start_render(&f);
 	mlx_loop(f.mlx);
-	return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
