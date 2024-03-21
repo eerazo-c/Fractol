@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 03:18:50 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 21:02:05 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:40:56 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -21,6 +21,10 @@ void data_initit(t_plano *f)
 {
 	f->escape_value = 4;
 	f->interations_definition = 42;
+	f->shift_x = 0.0;
+	f->shift_y = 0.0;
+	//zoom factor
+	f->zoom = 1.0;
 }
 
 void mouse(t_plano	*f)
