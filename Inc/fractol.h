@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 21:53:52 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/22 22:17:50 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -21,7 +21,7 @@
 # include "../Inc/libft/libft.h"
 # include <mlx.h>
 
-#define WIDTH	800
+#define WIDTH	1100
 #define HEIGHT	800
 
 //colors
@@ -41,8 +41,22 @@
 #define ELECTRIC_BLUE   0x0066FF  // A radiant blue
 #define LAVA_RED        0xFF3300  // A bright, molten red//
 
-//struct
+# define ESC 53
+# define CTR 256
+# define S_DOWN 5
+# define S_UP 4
+# define K_Left 123
+# define K_Right 124
+# define K_UP 126
+# define K_Down 125
+# define ZOOM_IN 78
+# define ZOOM_OUT 69
+# define K_plus 69
+# define K_minus 78
+# define Button5 5
+# define Button4 4
 
+//struct
 typedef struct s_complex
 {
 	//real
@@ -86,9 +100,9 @@ void		handle_pixel(int x, int y, t_plano *f);
 double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex 	square_complex(t_complex z);
-int close_key(t_plano *f):
-int key_handler(int key, t_plano *f);
-int mouse_handler(int button, int x, int y, t_plano *f);
+int close_key(t_plano *f);
+int key_handler(int keysym, t_plano *f);
+int mouse_handler(int button, t_plano *f);
 int julia(int x, int y, t_plano *f);
 
 #endif

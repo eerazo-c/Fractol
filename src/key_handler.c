@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/21 21:50:57 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/22 22:17:47 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -19,33 +19,33 @@ int close_key(t_plano *f)
 			f->mlx_win);
 	//revisar en fractal initatt lo de destroy imagen debe
 	//distroy display pero no esta en la minilib
-	mlx_destroy_display(f->mlx);
-	free(f->mlx_conection);
+	mlx_destroy_image(f->mlx, f->img.img_ptr);
+	free(f->mlx);
 	exit(EXIT_SUCCESS);
 }
 
-int key_handler(int key, t_plano *f)
+int key_read(int keysym, t_plano *f)
 {
-	if (key == XK_Escape)
-		close_handler(f);
-	if (key == XK_Left)
+	if (keysym == ESC)
+		close_key(f);
+	if (keysym == K_Left)
 		f->shift_x += (0.5 * f->zoom);
-	else if (key == XK_Right)
+	else if (keysym == K_Right)
 		f->shift_x -= (0.5 * f->zoom);
-	else if (key == XK_UP)
+	else if (keysym == K_UP)
 		f->shift_y -= (0.5 * f->zoom);
-	else if (key == XK_Down)
+	else if (keysym == K_Down)
 		f->shift_y += (0.5 * f->zoom);
-	else if (key == XK_plus)
-		f->iteration_definition += 10;
-	else if (key == XK_minus)
-		f->iteration_definition -= 10;
+	else if (keysym == K_plus)
+		f->interations_definition += 10;
+	else if (keysym == K_minus)
+		f->interations_definition -= 10;
 
 	start_render(f);
 	return (0);
 }
 
-int mouse_handler(int button, int x, int y, t_plano *f)
+int mouse_handler(int button, t_plano *f)
 {
 	//zoom in
 	if (button == Button5)
