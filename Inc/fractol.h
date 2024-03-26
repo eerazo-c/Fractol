@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/22 22:17:50 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/23 01:18:29 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -51,12 +51,56 @@
 # define K_Down 125
 # define ZOOM_IN 78
 # define ZOOM_OUT 69
-# define K_plus 69
-# define K_minus 78
 # define Button5 5
 # define Button4 4
 
 //struct
+
+
+typedef struct s_all
+{
+    t_move mv;
+    t_win win;
+    t_frac frac;
+    t_mouse mouse;
+}   t_all;
+
+typedef struct s_win
+{
+    void *mlx;
+    void *win;
+    void *img;
+    char *addr;
+    int bits;
+    int line;
+    int end;
+}   t_win;
+
+typedef struct s_frac
+{
+    double min_re;
+    double max_re;
+    double min_im;
+    double max_im;
+    double x;
+    double y;
+    char *set;
+}   t_frac;
+
+typedef struct s_move
+{
+    int i;
+    double x;
+    double y;
+    double z;
+}   t_move;
+
+typedef struct s_mouse
+{
+    int x;
+    int y;
+}   t_mouse;
+
 typedef struct s_complex
 {
 	//real
@@ -101,7 +145,7 @@ double		map(double unscaled_num, double new_min, double new_max, double old_min,
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex 	square_complex(t_complex z);
 int close_key(t_plano *f);
-int key_handler(int keysym, t_plano *f);
+int read_key(int key, t_all *f);
 int mouse_handler(int button, t_plano *f);
 int julia(int x, int y, t_plano *f);
 

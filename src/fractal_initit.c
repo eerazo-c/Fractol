@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 03:18:50 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/22 22:18:26 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/23 01:30:04 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -26,6 +26,28 @@ void data_initit(t_plano *f)
 	//zoom factor
 	f->zoom = 1.0;
 }
+
+int read_key(int key, t_all *f)
+{
+    if (key == ESC)
+        exit_win(f);
+    else if (key == K_LEFT)
+        f->mv.x -= 40.0;
+    else if (key == K_RIGHT)
+        f->mv.x += 40.0;
+    else if (key == K_UP)
+        f->mv.y -= 40.0;
+    else if (key == K_DOWN)
+        f->mv.y += 40.0;
+    else if (key == ZOOM_IN)
+        f->mv.z -= 0.1;
+    else if (key == ZOOM_OUT)
+        f->mv.z += 0.1;
+
+    fractol(f, -1, -1);
+    return (0);
+}
+
 void fractal_initit(t_plano *f)
 {
 	f->mlx = mlx_init();	
@@ -58,5 +80,5 @@ void fractal_initit(t_plano *f)
 
 	//init fractal
 	data_initit(f);
-//	mouse(f);
+	read_key(key, f);
 }
