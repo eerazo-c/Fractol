@@ -6,12 +6,12 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:11:16 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/22 21:42:02 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/29 23:50:43 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
 
-void my_pixel_p(int x, int y, t_img *img, int color)
+void my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int level;
 
@@ -43,8 +43,8 @@ void handle_pixel(int x, int y, t_plano *f)
 //ITERACION CON FORMULA
 	i = 0;
 //PIXEL DE COORDINACION
-	c.x = map(x, -2, +2, 0, WIDTH); //unsacled: new_min: old_min: old_max:
-	c.y = map(y, -2, -2, 0, HEIGHT); //unsacled: new_min: old_min: old_max:
+	z.x = map(x, -2, +2, 0, WIDTH); //unsacled: new_min: old_min: old_max:
+	z.y = map(y, +2, -2, 0, HEIGHT); //unsacled: new_min: old_min: old_max:
 
 	mandel_and_julia(&z, &c, f);
 
@@ -57,16 +57,16 @@ void handle_pixel(int x, int y, t_plano *f)
 		z = sum_complex(square_complex(z), c);
 
 		//is the value scaped?
-		if ((z.x * z.x) + (z.y * z.y) >  f->escape_value)
+		if ((z.x * z.x) + (z.y * z.y) > f->escape_value)
 		{
-			color = map(i, BLACK, WHITE, 0, f->escape_value); //unscaled_num: new_min: new_max: old_min: old_max: 
-			my_pixel_p(x, y, &f->img, color); //img:
+			color = map(i, BLACK, WHITE, 0, f->interations_definition); //unscaled_num: new_min: new_max: old_min: old_max: 
+			my_pixel_put(x, y, &f->img, color); //img: ; 0x03B674H
 			return ;
 		}
 		++i;
 	}
 	//madebrot interaciones
-	my_pixel_p(x, y, &f->img, WHITE); //img: color:
+	my_pixel_put(x, y, &f->img, BLACK); //img: color:
 }
 
 void start_render(t_plano *f)

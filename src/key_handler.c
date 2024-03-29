@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/26 21:17:23 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/30 00:11:56 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -24,37 +24,40 @@ int close_key(t_plano *f)
 	exit(EXIT_SUCCESS);
 }
 
-void fractol(t_all *f, int x, int y)
+int key_read(int keysym, t_plano *f)
 {
-    double re;
-    double im;
-    double dif;
+	if (keysym == ESC)
+		close_key(f);
+	if (keysym == K_Left)
+		f->shift_x += (0.5 * f->zoom);
+	else if (keysym == K_Right)
+		f->shift_x -= (0.5 * f->zoom);
+	else if (keysym == K_UP)
+		f->shift_y -= (0.5 * f->zoom);
+	else if (keysym == K_Down)
+		f->shift_y += (0.5 * f->zoom);
+	else if (keysym == K_plus)
+		f->interations_definition += 10;
+	else if (keysym == K_minus)
+		f->interations_definition -= 10;
 
-    mlx_clear_window(f->win.mlx, f->win.win);
-    while (++y < H)
-    {
-        x = -1;
-        dif = f->frac.min_im - f->frac.max_im;
-        im = f->frac.max_im + ((double)y + f->mv.y) * dif / (H * f->mv.z);
-        while (++x < W)
-        {
-            dif = f->frac.max_re - f->frac.min_re;
-            re = f->frac.min_re + ((double)x + f->mv.x) * dif / (W * f->mv.z);
-            put_color_px(type(f, re, im), f, x, y);
-        }
-    }
-    mlx_put_image_to_window(f->win.mlx, f->win.win, f->win.img, 0, 0);
+	start_render(f);
+	return (0);
 }
 
-int mouse_handler(int button, t_all *f)
+int mouse_handler(int button, t_plano *f)
 {
 	//zoom in
-	if (button == Button4)
-		f->mv.z +=0.01;
-	else if (button == Button5)
-		f->mv.z -= 0.1;
+	if (button == Button5)
+	{
+		f->zoom *=0.95;
+	}
+	else if (button == Button4)
+	{
+		f->zoom *= 1.05;
+	}
 
-	fractol(f, -1, -1);
+	start_render(f);
 	return (0);
 }
 
