@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:11:16 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/29 23:50:43 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/03/30 02:13:53 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -43,8 +43,8 @@ void handle_pixel(int x, int y, t_plano *f)
 //ITERACION CON FORMULA
 	i = 0;
 //PIXEL DE COORDINACION
-	z.x = map(x, -2, +2, 0, WIDTH); //unsacled: new_min: old_min: old_max:
-	z.y = map(y, +2, -2, 0, HEIGHT); //unsacled: new_min: old_min: old_max:
+	z.x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x; //unsacled: new_min: old_min: old_max:
+	z.y = (map(y, +2, -2, 0, HEIGHT) * f->zoom) + f->shift_y; //unsacled: new_min: old_min: old_max:
 
 	mandel_and_julia(&z, &c, f);
 
