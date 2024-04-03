@@ -6,10 +6,9 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:27:38 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 16:56:37 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:38:52 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../Inc/fractol.h"
 
 int	check(int ac, char **av)

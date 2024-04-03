@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:11:16 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 16:57:29 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:38:30 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -41,15 +41,15 @@ void	handle_pixel(int x, int y, t_plano *f)
 	int			color;
 
 	i = 0;
-	z.x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x;
-	z.y = (map(y, +2, -2, 0, HEIGHT) * f->zoom) + f->shift_y;
+	z.x = (map(x, -2, +2, WIDTH) * f->zoom) + f->shift_x;
+	z.y = (map(y, +2, -2, HEIGHT) * f->zoom) + f->shift_y;
 	mandel_and_julia(&z, &c, f);
 	while (i < f->interations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > f->escape_value)
 		{
-			color = map(i, BLACK, WHITE, 0, f->interations_definition);
+			color = map(i, BLACK, WHITE, f->interations_definition);
 			my_pixel_put(x, y, &f->img, color);
 			return ;
 		}

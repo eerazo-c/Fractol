@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 16:57:55 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:42:20 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -20,7 +20,6 @@ int	close_key(t_plano *f)
 
 int	key_read(int keysym, t_plano *f)
 {
-	printf("key -> %i\n", keysym);
 	if (keysym == ESC)
 		close_key(f);
 	if (keysym == K_LEFT)
@@ -56,8 +55,8 @@ int	julia(int x, int y, t_plano *f)
 {
 	if (!ft_strncmp(f->name, "julia", 5))
 	{
-		f->julia_x = (map(x, -2, +2, 0, WIDTH) * f->zoom) + f->shift_x;
-		f->julia_y = (map(y, +2, -2, 0, HEIGHT) * f->zoom) + f->shift_y;
+		f->julia_x = (map(x, -2, +2, WIDTH) * f->zoom) + f->shift_x;
+		f->julia_y = (map(y, +2, -2, HEIGHT) * f->zoom) + f->shift_y;
 		start_render(f);
 	}
 	return (0);

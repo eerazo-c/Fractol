@@ -6,19 +6,17 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:02:24 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 16:10:03 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:39:00 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
 
-double	map(double unscaled_num, double new_min, double new_max, double old_min, double old_max, ...)
+double	map(double unscaled_num, double new_min, double new_max, double old_min)
 {
 	double	result;
-	va_list	args;
 
-	va_start(args, old_max);
-	result = ((new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min);
-	va_end(args);
+	result = ((new_max - new_min) * (unscaled_num - old_min) / \
+			(0 - old_min) + new_min);
 	return (result);
 }
 
