@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/30 02:39:34 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:37:32 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdarg.h>
 # include "../Inc/printf/ft_printf.h"
 # include "../Inc/libft/libft.h"
 # include <mlx.h>
@@ -97,7 +98,7 @@ void		my_pixel_put(int x, int y, t_img *img, int color);
 void		mandel_and_julia(t_complex *z, t_complex *c, t_plano *f);
 void 		start_render(t_plano *f);
 void		handle_pixel(int x, int y, t_plano *f);
-double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max, ...);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex 	square_complex(t_complex z);
 int 		close_key(t_plano *f);

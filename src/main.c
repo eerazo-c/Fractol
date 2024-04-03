@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:27:38 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/30 02:42:41 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:56:37 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int	main(int ac, char **av)
 	f.name = av[1];
 	fractal_initit(&f);
 	start_render(&f);
-	mlx_hook(f.mlx_win, 2, 0, key_read, &f);
+	mlx_loop_hook(f.mlx, start_render, &f);
+	mlx_key_hook(f.mlx_win, key_read, &f);
+	mlx_mouse_hook(f.mlx_win, mouse_handler, &f);
 	mlx_loop(f.mlx);
 	return (EXIT_SUCCESS);
 }

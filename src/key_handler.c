@@ -6,25 +6,19 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/03/30 02:58:02 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:57:55 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
 
-int close_key(t_plano *f)
+int	close_key(t_plano *f)
 {
-	mlx_destroy_image(f->mlx,
-			f->img.img_ptr);
-	mlx_destroy_window(f->mlx,
-			f->mlx_win);
-	//revisar en fractal initatt lo de destroy imagen debe
-	//distroy display pero no esta en la minilib
-//	mlx_destroy_image(f->mlx, f->img.img_ptr);
-//	free(f->mlx);
+	mlx_destroy_image(f->mlx, f->img.img_ptr);
+	mlx_destroy_window(f->mlx, f->mlx_win);
 	exit(EXIT_SUCCESS);
 }
-//aqui revisa lo de las teclas = key_handler
-int key_read(int keysym, t_plano *f)
+
+int	key_read(int keysym, t_plano *f)
 {
 	printf("key -> %i\n", keysym);
 	if (keysym == ESC)
@@ -39,28 +33,26 @@ int key_read(int keysym, t_plano *f)
 		f->shift_y += (0.5 * f->zoom);
 	else if (keysym == ZOOM_OUT)
 		f->interations_definition += 10;
-	//	f->interations_definition -= 10;
+	else if (keysym == ZOOM_IN)
+		f->interations_definition -= 10;
 	start_render(f);
 	return (0);
 }
 
-int mouse_handler(int button, t_plano *f)
+int	mouse_handler(int button, int x, int y, t_plano *f)
 {
-	//zoom in
-	if (button == Button5)
-	{
-		f->zoom *=0.95;
-	}
-	else if (button == Button4)
-	{
+	(void)x;
+	(void)y;
+	if (button == BUTTON5)
+		f->zoom *= 0.95;
+	else if (button == BUTTON4)
 		f->zoom *= 1.05;
-	}
-
+	mlx_clear_window(f->mlx, f->mlx_win);
 	start_render(f);
 	return (0);
 }
 
-int julia(int x, int y, t_plano *f)
+int	julia(int x, int y, t_plano *f)
 {
 	if (!ft_strncmp(f->name, "julia", 5))
 	{
