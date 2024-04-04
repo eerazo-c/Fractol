@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 22:42:20 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:49:01 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -61,3 +61,4 @@ int	julia(int x, int y, t_plano *f)
 	}
 	return (0);
 }
+

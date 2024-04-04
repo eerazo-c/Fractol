@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:11:16 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 22:38:30 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:52:45 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -49,7 +49,7 @@ void	handle_pixel(int x, int y, t_plano *f)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > f->escape_value)
 		{
-			color = map(i, BLACK, WHITE, f->interations_definition);
+			color = map(i, WHITE, BLACK, f->interations_definition);
 			my_pixel_put(x, y, &f->img, color);
 			return ;
 		}

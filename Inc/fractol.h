@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/03 22:46:42 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:12:18 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -90,8 +90,8 @@ typedef struct s_plano
 
 //PROTOTIPO_FUNCIONES
 int			check(int ac, char **av);
-void		fractal_initit(t_plano *f);
-void		data_initit(t_plano *f);
+void		fractal_initit(t_plano *f, char **av);
+void		data_initit(t_plano *f, char **av);
 void		my_pixel_put(int x, int y, t_img *img, int color);
 void		mandel_and_julia(t_complex *z, t_complex *c, t_plano *f);
 int			start_render(t_plano *f);
