@@ -6,10 +6,16 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 21:21:55 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/04 20:49:01 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/05 19:36:29 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
+
+void	error(void)
+{
+	perror("problems");
+	exit(EXIT_FAILURE);
+}
 
 int	close_key(t_plano *f)
 {
@@ -61,4 +67,3 @@ int	julia(int x, int y, t_plano *f)
 	}
 	return (0);
 }
-

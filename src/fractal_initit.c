@@ -6,56 +6,65 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 03:18:50 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/04 21:04:25 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:15:47 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
 
-static	void	error(void)
-{
-	perror("problems");
-	exit(EXIT_FAILURE);
-}
-
 static	int	ft_isspace(char c)
 {
-	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ');
+	return (c == '\t' || c == '\n' || c == '\v' \
+			|| c == '\f' || c == '\r' || c == ' ');
 }
 
-static	double	ft_atod(const char *str)
+double	parse_integer(const char *str, int *i, int *sign)
 {
-    double result = 0.0;
-    int sign = 1;
-    int i = 0;
-    double fraction = 0.1;
+	double	result;
 
-    while (ft_isspace(str[i]) == 1)
-        i++;
+	result = 0.0;
+	while (ft_isspace(str[*i]) == 1)
+		(*i)++;
+	if (str[*i] == '-')
+	{
+		*sign = -1;
+		(*i)++;
+	}
+	else if (str[*i] == '+')
+	{
+		*sign = 1;
+		(*i)++;
+	}
+	else
+		*sign = 1;
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		result = result * 10.0 + (str[(*i)++] - '0');
+	}
+	return (result);
+}
 
-    if (str[i] == '-')
-   	{
-        sign = -1;
-        i++;
-    }
-   	else if (str[i] == '+') {
-        i++;
-    }
+double	ft_atod(const char *str)
+{
+	double	result;
+	int		sign;
+	int		i;
+	double	fraction;
 
-    while (str[i] >= '0' && str[i] <= '9') {
-        result = result * 10.0 + (str[i] - '0');
-        i++;
-    }
-
-    if (str[i] == '.') {
-        i++;
-        while (str[i] >= '0' && str[i] <= '9') {
-            result = result + (str[i] - '0') * fraction;
-            fraction *= 0.1;
-            i++;
-        }
-    }
-
-    return (sign * result);
+	result = 0.0;
+	sign = 1;
+	i = 0;
+	result = parse_integer(str, &i, &sign);
+	if (str[i] == '.')
+	{
+		fraction = 0.1;
+		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			result = result + (str[i++] - '0') * fraction;
+			fraction *= 0.1;
+		}
+	}
+	return (sign * result);
 }
 
 void	data_initit(t_plano *f, char **av)

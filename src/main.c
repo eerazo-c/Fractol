@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:27:38 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/04 20:49:03 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/05 19:22:30 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../Inc/fractol.h"
@@ -18,10 +18,10 @@ int	check(int ac, char **av)
 		write(1, "The arguments are not correct\n", 30);
 		return (0);
 	}
-	else if ((ft_strncmp(*av, "mandelbrot", 10) != '\0' && ft_strncmp(*av,
-			"julia", 5) != '\0') || (!ft_strncmp(*av, "julia", 5) && ac < 4))
+	else if ((ft_strncmp(*av, "mandelbrot", 10) != '\0' && \
+				ft_strncmp(*av, "julia", 5) != '\0') || \
+			(!ft_strncmp(*av, "julia", 5) && ac < 4))
 	{
-
 		write(1, "Avalaible fractals:\n", 18);
 		write(1, "- Mandelbrot\n", 13);
 		write(1, "- Julia num1 num2\n", 18);

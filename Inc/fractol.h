@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/04 20:12:18 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/05 19:35:04 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -22,8 +22,8 @@
 # include "../Inc/libft/libft.h"
 # include <mlx.h>
 
-# define WIDTH	600
-# define HEIGHT	500
+# define WIDTH	800
+# define HEIGHT	800
 
 //colors
 # define BLACK       0x000000  // RGB(0, 0, 0)
@@ -104,5 +104,6 @@ int			close_key(t_plano *f);
 int			key_read(int keysym, t_plano *f);
 int			julia(int x, int y, t_plano *f);
 int			mouse_handler(int button, int x, int y, t_plano *f);
+void	error(void);
 
 #endif
