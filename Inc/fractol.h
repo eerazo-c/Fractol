@@ -6,7 +6,7 @@
 /*   By: eerazo-c <eerazo-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:41:17 by eerazo-c          #+#    #+#             */
-/*   Updated: 2024/04/05 19:35:04 by eerazo-c         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:52:35 by eerazo-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -104,6 +104,6 @@ int			close_key(t_plano *f);
 int			key_read(int keysym, t_plano *f);
 int			julia(int x, int y, t_plano *f);
 int			mouse_handler(int button, int x, int y, t_plano *f);
-void	error(void);
+void		error(void);
 
 #endif
